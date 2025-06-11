@@ -6,6 +6,7 @@ import com.ecommerce.project.model.Category;
 import com.ecommerce.project.model.Product;
 import com.ecommerce.project.payload.ProductDTO;
 import com.ecommerce.project.payload.ProductResponse;
+import com.ecommerce.project.payload.ProductSpecification;
 import com.ecommerce.project.repositories.CategoryRepository;
 import com.ecommerce.project.repositories.ProductRepository;
 import org.modelmapper.ModelMapper;
@@ -69,14 +70,18 @@ public class ProductServiceImpl implements ProductService{
 
 
     @Override
-    public ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
+    public ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder,String categoryName, String keyword) {
 
         Sort sortByAndOrder = sortOrder.equalsIgnoreCase("asc")
                 ?Sort.by(sortBy).ascending()
                 :Sort.by(sortBy).descending();
 
         Pageable pageDetails = PageRequest.of(pageNumber,pageSize,sortByAndOrder);
-        Page<Product> pageProducts = productRepository.findAll(pageDetails);
+        Page<Product> pageProducts = productRepository.findAll(
+                ProductSpecification.withKeywordAndCategory(keyword, categoryName),
+                pageDetails
+        );
+
 
         List<Product> products = pageProducts.getContent();
 
@@ -95,6 +100,38 @@ public class ProductServiceImpl implements ProductService{
         productResponse.setTotalElements(pageProducts.getTotalElements());
         productResponse.setTotalPages(pageProducts.getTotalPages());
         productResponse.setLastPage(pageProducts.isLast());
+        return productResponse;
+    }
+
+    @Override
+    public ProductResponse searchByCategoryName(String categoryName, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
+        Category category = categoryRepository.findByCategoryName(categoryName);
+
+        Sort sortByAndOrder = sortOrder.equalsIgnoreCase("asc")
+                ?Sort.by(sortBy).ascending()
+                :Sort.by(sortBy).descending();
+
+        Pageable pageDetails = PageRequest.of(pageNumber,pageSize,sortByAndOrder);
+        Page<Product> pageProducts = productRepository.findByCategoryOrderByPriceAsc(category,pageDetails);
+
+        List<Product> products = pageProducts.getContent();
+
+        List<ProductDTO> productDTOS = products.stream()
+                .map(product -> modelMapper.map(product, ProductDTO.class))
+                .toList();
+
+        if(products.size() == 0){
+            throw new APIException(category.getCategoryName() + " does not have any products!");
+        }
+
+        ProductResponse productResponse = new ProductResponse();
+        productResponse.setContent(productDTOS);
+        productResponse.setPageSize(pageProducts.getSize());
+        productResponse.setPageNumber(pageProducts.getNumber());
+        productResponse.setTotalElements(pageProducts.getTotalElements());
+        productResponse.setTotalPages(pageProducts.getTotalPages());
+        productResponse.setLastPage(pageProducts.isLast());
+        productResponse.setContent(productDTOS);
         return productResponse;
     }
 

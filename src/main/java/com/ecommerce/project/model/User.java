@@ -70,6 +70,8 @@ public class User {
             orphanRemoval = true)
     private Set<Product> products = new HashSet<>();
 
-
+    @ToString.Exclude
+    @OneToOne(mappedBy = "user" , cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE},orphanRemoval = true)
+    private Cart cart;
 
 }

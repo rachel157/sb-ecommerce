@@ -71,16 +71,21 @@ public class WebSecurityConfig {
                             session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/auth/**").permitAll()
-                                .requestMatchers("/v3/api-docs/**").permitAll()
-                                .requestMatchers("/h2-console/**").permitAll()
-                                .requestMatchers("/swagger-ui/**").permitAll()
-                                .requestMatchers("/api/public/**").permitAll()
-                                .requestMatchers("/api/admin/**").permitAll()
-                                .requestMatchers(("/api/test/**")).permitAll()
-                                .anyRequest().authenticated());
+                                auth.requestMatchers("/api/auth/**").permitAll()
+                                        .requestMatchers("/v3/api-docs/**").permitAll()
+                                        .requestMatchers("/h2-console/**").permitAll()
+                                        //.requestMatchers("/api/admin/**").permitAll()
+                                        .requestMatchers("/api/public/**").permitAll()
+                                        .requestMatchers("/api/products/**").permitAll()
+                                        .requestMatchers("/api/public/categories/products").permitAll()
+                                        .requestMatchers("/swagger-ui/**").permitAll()
+                                        .requestMatchers("/api/test/**").permitAll()
+                                        .requestMatchers("/images/**").permitAll()
+                                        .anyRequest().authenticated()
+                );
 
         http.authenticationProvider(authenticationProvider);
+
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         http.headers((headers) -> headers.frameOptions(
                 HeadersConfigurer.FrameOptionsConfig::sameOrigin));
@@ -108,10 +113,10 @@ public class WebSecurityConfig {
             Category c3 = new Category("Other devices");
             categoryRepository.save(c3);
 
-            Product p1 = new Product("MacBook Pro M2", "macbook_pro_m2.jpg", "Apple MacBook Pro with M2 chip", 20, 1999.99, 5.0, 1899.99, c1);
-            Product p2 = new Product("Dell XPS 13", "dell_xps_13.jpg", "Compact and powerful Dell ultrabook", 15, 1499.99, 10.0, 1349.99, c1);
-            Product p3 = new Product("HP Spectre x360", "hp_spectre_x360.jpg", "Convertible 2-in-1 laptop from HP", 25, 1399.99, 8.0, 1287.99, c1);
-            Product p4 = new Product("Lenovo ThinkPad X1 Carbon", "thinkpad_x1_carbon.jpg", "Durable and reliable business laptop", 30, 1599.99, 7.5, 1479.99, c1);
+            Product p1 = new Product("MacBook Pro M2", "1-Photoroom.jpg", "Apple MacBook Pro with M2 chip", 20, 1999.99, 5.0, 1899.99, c1);
+            Product p2 = new Product("Dell XPS 13", "2-Photoroom.jpg", "Compact and powerful Dell ultrabook", 15, 1499.99, 10.0, 1349.99, c1);
+            Product p3 = new Product("HP Spectre x360", "3-Photoroom.jpg", "Convertible 2-in-1 laptop from HP", 25, 1399.99, 8.0, 1287.99, c1);
+            Product p4 = new Product("Lenovo ThinkPad X1 Carbon", "4-Photoroom.jpg", "Durable and reliable business laptop", 30, 1599.99, 7.5, 1479.99, c1);
             Product p5 = new Product("Asus ROG Zephyrus G14", "rog_zephyrus_g14.jpg", "High-performance gaming laptop from Asus", 10, 1799.99, 6.0, 1691.99, c1);
             Product p6 = new Product("Acer Swift 3", "acer_swift_3.jpg", "Lightweight laptop with great battery life", 40, 899.99, 12.0, 791.99, c1);
             Product p7 = new Product("Microsoft Surface Laptop 5", "surface_laptop_5.jpg", "Sleek design with excellent touch display", 18, 1299.99, 10.0, 1169.99, c1);
