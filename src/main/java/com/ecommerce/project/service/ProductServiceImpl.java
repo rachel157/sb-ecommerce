@@ -6,7 +6,7 @@ import com.ecommerce.project.model.Category;
 import com.ecommerce.project.model.Product;
 import com.ecommerce.project.payload.ProductDTO;
 import com.ecommerce.project.payload.ProductResponse;
-import com.ecommerce.project.payload.ProductSpecification;
+import com.ecommerce.project.JPASpecifications.ProductSpecification;
 import com.ecommerce.project.repositories.CategoryRepository;
 import com.ecommerce.project.repositories.ProductRepository;
 import org.modelmapper.ModelMapper;
@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService{
 
 
     @Override
-    public ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder,String categoryName, String keyword) {
+    public ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder,String categoryName, String keyword,Double minPrice,Double maxPrice) {
 
         Sort sortByAndOrder = sortOrder.equalsIgnoreCase("asc")
                 ?Sort.by(sortBy).ascending()
@@ -78,7 +78,7 @@ public class ProductServiceImpl implements ProductService{
 
         Pageable pageDetails = PageRequest.of(pageNumber,pageSize,sortByAndOrder);
         Page<Product> pageProducts = productRepository.findAll(
-                ProductSpecification.withKeywordAndCategory(keyword, categoryName),
+                ProductSpecification.withKeywordAndCategoryAndMinPriceAndMaxPrice(keyword, categoryName,minPrice, maxPrice),
                 pageDetails
         );
 

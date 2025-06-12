@@ -36,9 +36,11 @@ public class ProductController {
             @RequestParam(name = "sortBy" , defaultValue = AppConstants.SORT_PRODUCTS_BY, required = false) String sortBy,
             @RequestParam(name = "sortOrder" , defaultValue = AppConstants.SORT_DIR, required = false) String sortOrder,
             @RequestParam(name = "category", required = false) String categoryName,
-            @RequestParam(name = "keyword" , required = false) String keyword
-    ) {
-        ProductResponse productResponse = productService.getAllProducts(pageNumber,pageSize,sortBy,sortOrder,categoryName,keyword);
+            @RequestParam(name = "keyword" , required = false) String keyword,
+            @RequestParam(name = "minPrice" , required = false) Double minPrice,
+            @RequestParam(name = "maxPrice" , required = false) Double maxPrice
+            ) {
+        ProductResponse productResponse = productService.getAllProducts(pageNumber,pageSize,sortBy,sortOrder,categoryName,keyword,minPrice,maxPrice);
         return new ResponseEntity<>(productResponse, HttpStatus.OK);
     }
 
