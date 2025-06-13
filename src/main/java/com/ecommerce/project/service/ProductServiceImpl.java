@@ -136,6 +136,13 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
+    public ProductDTO getProductById(Long productId) {
+        Product savedProduct = productRepository.findById(productId)
+                .orElseThrow(()-> new ResourceNotFoundException("Product","productId",productId));
+        return modelMapper.map(savedProduct, ProductDTO.class);
+    }
+
+    @Override
     public ProductResponse searchByCategory(Long categoryId, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(()->new ResourceNotFoundException("Category","categoryId",categoryId));

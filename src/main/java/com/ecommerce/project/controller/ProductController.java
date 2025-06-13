@@ -4,6 +4,7 @@ import com.ecommerce.project.config.AppConstants;
 import com.ecommerce.project.model.Product;
 import com.ecommerce.project.payload.ProductDTO;
 import com.ecommerce.project.payload.ProductResponse;
+import com.ecommerce.project.repositories.ProductRepository;
 import com.ecommerce.project.service.ProductService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -27,6 +28,12 @@ public class ProductController {
                                                  @PathVariable Long categoryId){
         ProductDTO savedproductDTO = productService.addProduct(categoryId, productDTO);
         return new ResponseEntity<>(savedproductDTO, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/public/products/{productId}")
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long productId){
+        ProductDTO productDTO = productService.getProductById(productId);
+        return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
 
     @GetMapping("/public/products")
