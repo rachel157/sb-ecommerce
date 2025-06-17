@@ -37,10 +37,9 @@ public class CartServiceImpl implements CartService {
     @Override
     public CartDTO addProductToCart(Long productId, Integer quantity) {
     Cart cart = createCart();
-5
+
     Product product = productRepository.findById(productId)
             .orElseThrow(() -> new ResourceNotFoundException("Product","productId",productId));
-    List<CartItem> cartItems = cart.getCartItems();
 
     CartItem cartItem = cartItemRepository.findCartItemByProductIdAndCartId(cart.getCartId(),productId);
 
