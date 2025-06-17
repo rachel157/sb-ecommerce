@@ -59,8 +59,8 @@ public class JwtUtils {
         ResponseCookie cookie = ResponseCookie.from(jwtCookie,jwt)
                 .path("/")
                 .maxAge(24 * 60 * 60)
-                .secure(false)             // ❗ BẮT BUỘC với SameSite=None
-                .sameSite("Lax")         // ❗ Cho phép cross-origin
+                .httpOnly(false)
+                .secure(false)
                 .build();
         return cookie;
     }
@@ -68,9 +68,9 @@ public class JwtUtils {
     public ResponseCookie getCleanJwtCookie(){
         ResponseCookie cookie = ResponseCookie.from(jwtCookie,null)
                 .path("/")
-                .maxAge(0)                // ❗ Xoá ngay lập tức
-                .secure(false)             // ❗ Quan trọng: phải giống với cookie ban đầu
-                .sameSite("Lax")         // ❗ Nếu đang dùng cross-origin (Vite:5173)
+                .maxAge(0)
+                .httpOnly(false)
+                .secure(false)
                 .build();
         System.out.println("Cookie da bi xoa");
         return cookie;

@@ -9,7 +9,6 @@ import com.ecommerce.project.payload.CartDTO;
 import com.ecommerce.project.payload.ProductDTO;
 import com.ecommerce.project.repositories.CartItemRepository;
 import com.ecommerce.project.repositories.CartRepository;
-import com.ecommerce.project.repositories.CategoryRepository;
 import com.ecommerce.project.repositories.ProductRepository;
 import com.ecommerce.project.util.AuthUtil;
 import jakarta.transaction.Transactional;
@@ -32,8 +31,6 @@ public class CartServiceImpl implements CartService {
     AuthUtil authUtil;
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    private ProductRepository productRepository2;
     @Autowired
     private CartItemRepository cartItemRepository;
 
