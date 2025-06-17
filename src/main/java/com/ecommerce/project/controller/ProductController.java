@@ -36,6 +36,7 @@ public class ProductController {
         return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
 
+    //FILTER
     @GetMapping("/public/products")
     public ResponseEntity<ProductResponse> getAllProducts(
             @RequestParam(name = "pageNumber" , defaultValue = AppConstants.PAGE_NUMBER , required = false) Integer pageNumber,
@@ -45,9 +46,10 @@ public class ProductController {
             @RequestParam(name = "category", required = false) String categoryName,
             @RequestParam(name = "keyword" , required = false) String keyword,
             @RequestParam(name = "minPrice" , required = false) Double minPrice,
-            @RequestParam(name = "maxPrice" , required = false) Double maxPrice
+            @RequestParam(name = "maxPrice" , required = false) Double maxPrice,
+            @RequestParam(name = "brand" , required = false) String brand
             ) {
-        ProductResponse productResponse = productService.getAllProducts(pageNumber,pageSize,sortBy,sortOrder,categoryName,keyword,minPrice,maxPrice);
+        ProductResponse productResponse = productService.getAllProducts(pageNumber,pageSize,sortBy,sortOrder,categoryName,keyword,minPrice,maxPrice,brand);
         return new ResponseEntity<>(productResponse, HttpStatus.OK);
     }
 
