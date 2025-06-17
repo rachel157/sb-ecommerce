@@ -29,7 +29,7 @@ public class Category {
     @OneToMany(mappedBy = "category" , cascade = CascadeType.ALL)
     private List<Product> products;
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany(mappedBy = "categories",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Brand> brands = new HashSet<>();
 
 
