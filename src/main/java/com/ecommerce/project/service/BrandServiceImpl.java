@@ -31,8 +31,8 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public List<BrandDTO> getBrandsByCategoryId(Long categoryId) {
-        List<Brand> brands = brandRepository.findByCategories_CategoryId(categoryId);
+    public List<BrandDTO> getBrandsByCategoryName(String categoryName) {
+        List<Brand> brands = brandRepository.findByCategories_CategoryName(categoryName);
         return brands.stream().map(b -> modelMapper.map(b, BrandDTO.class)).toList();
     }
 }
