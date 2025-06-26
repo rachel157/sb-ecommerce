@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ProductSpecification {
     public static Specification<Product> withKeywordAndCategoryAndMinPriceAndMaxPrice(String keyword, String categoryName,
-                                                                Double minPrice, Double maxPrice) {
+                                                                Double minPrice, Double maxPrice,String brand) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -38,6 +38,14 @@ public class ProductSpecification {
             if (maxPrice != null) {
                 predicates.add(criteriaBuilder.lessThanOrEqualTo(
                         root.get("specialPrice"), maxPrice
+                ));
+            }
+
+            //Điều kiện lọc theo tên brand
+            if(brand != null && !brand.trim().isEmpty()) {
+                predicates.add(criteriaBuilder.like(
+                        criteriaBuilder.lower(root.get("brand").get("brandName")),
+                        "%" + brand.toLowerCase() + "%"
                 ));
             }
 

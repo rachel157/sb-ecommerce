@@ -37,7 +37,7 @@ public class ProductController {
     }
 
     @GetMapping("/public/products")
-    public ResponseEntity<ProductResponse> getAllProducts(
+    public ResponseEntity<ProductResponse> getProductsByFilter(
             @RequestParam(name = "pageNumber" , defaultValue = AppConstants.PAGE_NUMBER , required = false) Integer pageNumber,
             @RequestParam(name = "pageSize" , defaultValue = AppConstants.PAGE_SIZE , required = false) Integer pageSize,
             @RequestParam(name = "sortBy" , defaultValue = AppConstants.SORT_PRODUCTS_BY, required = false) String sortBy,
@@ -45,9 +45,10 @@ public class ProductController {
             @RequestParam(name = "category", required = false) String categoryName,
             @RequestParam(name = "keyword" , required = false) String keyword,
             @RequestParam(name = "minPrice" , required = false) Double minPrice,
-            @RequestParam(name = "maxPrice" , required = false) Double maxPrice
+            @RequestParam(name = "maxPrice" , required = false) Double maxPrice,
+            @RequestParam(name = "brand" , required = false) String brand
             ) {
-        ProductResponse productResponse = productService.getAllProducts(pageNumber,pageSize,sortBy,sortOrder,categoryName,keyword,minPrice,maxPrice);
+        ProductResponse productResponse = productService.getProductsByFilter(pageNumber,pageSize,sortBy,sortOrder,categoryName,keyword,minPrice,maxPrice,brand);
         return new ResponseEntity<>(productResponse, HttpStatus.OK);
     }
 

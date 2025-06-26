@@ -79,7 +79,7 @@ public class ProductServiceImpl implements ProductService{
 
 
     @Override
-    public ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder,String categoryName, String keyword,Double minPrice,Double maxPrice) {
+    public ProductResponse getProductsByFilter(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder,String categoryName, String keyword,Double minPrice,Double maxPrice,String brand) {
 
         Sort sortByAndOrder = sortOrder.equalsIgnoreCase("asc")
                 ?Sort.by(sortBy).ascending()
@@ -87,7 +87,7 @@ public class ProductServiceImpl implements ProductService{
 
         Pageable pageDetails = PageRequest.of(pageNumber,pageSize,sortByAndOrder);
         Page<Product> pageProducts = productRepository.findAll(
-                ProductSpecification.withKeywordAndCategoryAndMinPriceAndMaxPrice(keyword, categoryName,minPrice, maxPrice),
+                ProductSpecification.withKeywordAndCategoryAndMinPriceAndMaxPrice(keyword, categoryName,minPrice, maxPrice,brand),
                 pageDetails
         );
 

@@ -1,6 +1,7 @@
 package com.ecommerce.project.service;
 
 import com.ecommerce.project.exceptions.APIException;
+import com.ecommerce.project.exceptions.ResourceNotFoundException;
 import com.ecommerce.project.model.Brand;
 import com.ecommerce.project.payload.BrandDTO;
 import com.ecommerce.project.repositories.BrandRepository;
@@ -31,8 +32,11 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public List<BrandDTO> getBrandsByCategoryId(Long categoryId) {
-        List<Brand> brands = brandRepository.findByCategories_CategoryId(categoryId);
+    public List<BrandDTO> getBrandsByCategoryName(String categoryName) {
+        List<Brand> brands = brandRepository.findByCategories_CategoryNameIgnoreCase(categoryName);
+        if(brands.isEmpty()){
+            throw new APIException("No Brands Found With Category Name: " + categoryName);
+        }
         return brands.stream().map(b -> modelMapper.map(b, BrandDTO.class)).toList();
     }
 }

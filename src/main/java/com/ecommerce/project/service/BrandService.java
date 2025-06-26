@@ -7,5 +7,5 @@ import java.util.List;
 public interface BrandService {
     List<BrandDTO> getAllBrands();
 
-    List<BrandDTO> getBrandsByCategoryId(Long categoryId);
+    List<BrandDTO> getBrandsByCategoryName(String categoryName);
 }
