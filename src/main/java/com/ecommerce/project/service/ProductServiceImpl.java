@@ -2,6 +2,7 @@ package com.ecommerce.project.service;
 
 import com.ecommerce.project.exceptions.APIException;
 import com.ecommerce.project.exceptions.ResourceNotFoundException;
+import com.ecommerce.project.model.Brand;
 import com.ecommerce.project.model.Cart;
 import com.ecommerce.project.model.Category;
 import com.ecommerce.project.model.Product;
@@ -9,6 +10,7 @@ import com.ecommerce.project.payload.CartDTO;
 import com.ecommerce.project.payload.ProductDTO;
 import com.ecommerce.project.payload.ProductResponse;
 import com.ecommerce.project.JPASpecifications.ProductSpecification;
+import com.ecommerce.project.repositories.BrandRepository;
 import com.ecommerce.project.repositories.CartRepository;
 import com.ecommerce.project.repositories.CategoryRepository;
 import com.ecommerce.project.repositories.ProductRepository;
@@ -48,14 +50,19 @@ public class ProductServiceImpl implements ProductService{
 
     @Value("${project.image}")
     private String path;
+    @Autowired
+    private BrandRepository brandRepository;
 
     @Override
-    public ProductDTO addProduct(Long categoryId, ProductDTO productDTO) {
+    public ProductDTO addProduct(Long categoryId,Long brandId, ProductDTO productDTO) {
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(()-> new ResourceNotFoundException("Category","categoryId",categoryId));
+        Brand brand = brandRepository.findById(brandId)
+                .orElseThrow(()-> new ResourceNotFoundException("Brand","brandId",brandId));
+
+        List<Product> products = productRepository.findByCategory_CategoryIdAndBrand_BrandId(categoryId,brandId);
 
         boolean isProductNotPresent = true;
-        List<Product> products = category.getProducts();
         for(Product value : products){
             if(value.getProductName().equals(productDTO.getProductName())){
                 isProductNotPresent = false;
@@ -66,6 +73,7 @@ public class ProductServiceImpl implements ProductService{
             Product product = modelMapper.map(productDTO,Product.class);
             product.setImage("default.png");
             product.setCategory(category);
+            product.setBrand(brand);
             double specialPrice = product.getPrice() -
                     (product.getDiscount()*0.01)*product.getPrice();
             product.setSpecialPrice(specialPrice);
