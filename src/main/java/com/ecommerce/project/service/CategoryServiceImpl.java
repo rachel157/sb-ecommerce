@@ -2,6 +2,7 @@ package com.ecommerce.project.service;
 
 import com.ecommerce.project.exceptions.APIException;
 import com.ecommerce.project.exceptions.ResourceNotFoundException;
+import com.ecommerce.project.model.Brand;
 import com.ecommerce.project.model.Category;
 import com.ecommerce.project.payload.CategoryDTO;
 import com.ecommerce.project.payload.CategoryResponse;
@@ -76,11 +77,18 @@ public class CategoryServiceImpl implements CategoryService{
     public CategoryDTO deleteCategory(Long categoryId) {
 
         Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(()->new ResourceNotFoundException("Category","categoryId",categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
 
+        // Gỡ liên kết với Brand
+        for (Brand brand : category.getBrands()) {
+            brand.getCategories().remove(category);
+        }
+        category.getBrands().clear();
+
+        // Sau đó mới xóa
         categoryRepository.delete(category);
-        CategoryDTO deletedCategoryDTO = modelMapper.map(category,CategoryDTO.class);
-        return deletedCategoryDTO;
+
+        return modelMapper.map(category, CategoryDTO.class);
     }
 
     @Override

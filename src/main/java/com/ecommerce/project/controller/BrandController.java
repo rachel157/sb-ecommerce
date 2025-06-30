@@ -2,6 +2,7 @@ package com.ecommerce.project.controller;
 
 import com.ecommerce.project.payload.BrandDTO;
 import com.ecommerce.project.service.BrandService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +30,22 @@ public class BrandController {
         return new ResponseEntity<>(brands, HttpStatus.OK);
     }
 
+    @PostMapping("/categories/{categoryId}/brand")
+    public ResponseEntity<BrandDTO> createBrand(@PathVariable Long categoryId, @Valid @RequestBody BrandDTO brandDTO){
+        BrandDTO savedBrand = brandService.createBrand(categoryId,brandDTO);
+        return new ResponseEntity<>(savedBrand, HttpStatus.OK);
+    }
 
+    @PutMapping("/brand/{brandId}")
+    public ResponseEntity<BrandDTO> updateBrand(@PathVariable Long brandId,@Valid @RequestBody BrandDTO brandDTO){
+        BrandDTO updatedBrand = brandService.updateBrand(brandId,brandDTO);
+        return new ResponseEntity<>(updatedBrand,HttpStatus.OK);
+    }
 
-
+    @DeleteMapping("/admin/brand/{brandId}")
+    public ResponseEntity<String> deleteBrand(@PathVariable  Long brandId){
+        String status = brandService.deleteBrand(brandId);
+        return new ResponseEntity<>(status, HttpStatus.OK);
+    }
 
 }
