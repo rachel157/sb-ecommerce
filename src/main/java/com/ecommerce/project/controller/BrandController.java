@@ -36,16 +36,23 @@ public class BrandController {
         return new ResponseEntity<>(savedBrand, HttpStatus.OK);
     }
 
-    @PutMapping("/brand/{brandId}")
+    @PutMapping("/admin/brands/{brandId}")
     public ResponseEntity<BrandDTO> updateBrand(@PathVariable Long brandId,@Valid @RequestBody BrandDTO brandDTO){
         BrandDTO updatedBrand = brandService.updateBrand(brandId,brandDTO);
         return new ResponseEntity<>(updatedBrand,HttpStatus.OK);
     }
 
-    @DeleteMapping("/admin/brand/{brandId}")
+    @DeleteMapping("/admin/brands/{brandId}")
     public ResponseEntity<String> deleteBrand(@PathVariable  Long brandId){
         String status = brandService.deleteBrand(brandId);
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
+
+//    @GetMapping("/public/brands")
+//    public ResponseEntity<List<BrandDTO>> searchBrandsByKeyword(@RequestParam(name="keyword") String keyword){
+//        List<BrandDTO> brands = brandService.searchBrandByKeyword(keyword);
+//        return new ResponseEntity<>(brands, HttpStatus.OK);
+//    }
+
 
 }

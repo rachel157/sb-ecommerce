@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -82,4 +83,14 @@ public class BrandServiceImpl implements BrandService {
         brandRepository.delete(savedBrand);
         return "Brand has been deleted";
     }
+
+//    @Override
+//    public List<BrandDTO> searchBrandByKeyword(String keyword) {
+//        List<Brand> brands = brandRepository.findByBrandNameContainingIgnoreCase(keyword);
+//        if(brands==null){
+//            throw new APIException("No Brands Found With Brand Name: " + keyword);
+//        }
+//        List<BrandDTO> brandDTOS = brands.stream().map(b -> modelMapper.map(b, BrandDTO.class)).toList();
+//        return brandDTOS;
+//    }
 }

@@ -12,4 +12,8 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
     //List<Brand> findByCategories_CategoryId(Long categoryId);
 
     List<Brand> findByCategories_CategoryNameIgnoreCase(String categoryName);
+
+
+
+    //List<Brand> findByBrandNameContainingIgnoreCase(String keyword);
 }
