@@ -6,6 +6,7 @@ import com.ecommerce.project.model.Brand;
 import com.ecommerce.project.model.Category;
 import com.ecommerce.project.payload.CategoryDTO;
 import com.ecommerce.project.payload.CategoryResponse;
+import com.ecommerce.project.repositories.BrandRepository;
 import com.ecommerce.project.repositories.CategoryRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,6 +33,9 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private BrandRepository brandRepository;
 
     @Override
     public CategoryResponse getAllCategories(Integer pageNumber,Integer pageSize,String sortBy,String sortOrder) {
@@ -80,10 +85,19 @@ public class CategoryServiceImpl implements CategoryService{
                 .orElseThrow(() -> new ResourceNotFoundException("Category", "id", categoryId));
 
         // Gỡ liên kết với Brand
+        List<Brand> brandsToDelete = new ArrayList<>();
         for (Brand brand : category.getBrands()) {
             brand.getCategories().remove(category);
+            brandRepository.save(brand);
+            if(brand.getCategories().isEmpty()){
+                brandsToDelete.add(brand);
+            }
         }
         category.getBrands().clear();
+
+        for(Brand brand : brandsToDelete){
+            brandRepository.delete(brand);
+        }
 
         // Sau đó mới xóa
         categoryRepository.delete(category);

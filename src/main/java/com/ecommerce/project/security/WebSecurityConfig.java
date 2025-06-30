@@ -82,8 +82,10 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider);
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
         http.headers((headers) -> headers.frameOptions(
                 HeadersConfigurer.FrameOptionsConfig::sameOrigin));
+
         return http.build();
 
     }
