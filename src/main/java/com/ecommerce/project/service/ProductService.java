@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 public interface ProductService {
-    ProductDTO addProduct(Long categoryId, ProductDTO product);
+    ProductDTO addProduct(Long categoryId,Long brandId, ProductDTO product);
 
     ProductResponse searchByCategory(Long categoryId, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
 
@@ -19,5 +19,9 @@ public interface ProductService {
 
     ProductDTO updatedProductImage(Long productId, MultipartFile image) throws IOException;
 
-    ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
+    ProductResponse searchByCategoryName(String categoryName, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
+
+    ProductDTO getProductById(Long productId);
+
+    ProductResponse getProductsByFilter(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder, String categoryName, String keyword, Double minPrice, Double maxPrice, String brand);
 }
