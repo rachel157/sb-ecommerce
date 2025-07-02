@@ -84,85 +84,46 @@ public class DataInitializer {
 
 
             // Tạo và lưu các đối tượng Product
-            Product p1 = new Product("Apple MacBook Air 13-inch (M4, 2025)", "/images/1-Photoroom.png", "MacBook Air mới nhất với chip M4, màn hình Liquid Retina 13.6 inch, bộ nhớ thống nhất lên đến 24GB và SSD 2TB. Hoàn hảo cho sinh viên và chuyên gia.", 5, 999.0, 0.1, 899.1, c1);
-
-            Product p2 = new Product("Apple MacBook Air 15-inch (M4, 2025)", "/images/2-Photoroom.png", "Phiên bản màn hình lớn của MacBook Air với chip M4, màn hình Liquid Retina 15.3 inch, bộ nhớ thống nhất 24GB và SSD 2TB.", 3, 1199.0, 0.1, 1079.1, c1);
-
-            Product p3 = new Product("Apple MacBook Pro 14-inch (M4, 2025)", "/images/3-Photoroom.png", "MacBook Pro hiệu năng cao với chip M4, màn hình Liquid Retina XDR 14.2 inch, bộ nhớ thống nhất 36GB và SSD 8TB. Lý tưởng cho chuyên gia sáng tạo.", 2, 1999.0, 0.05, 1899.05, c1);
-
-            Product p4 = new Product("Microsoft Surface Laptop 7", "/images/4-Photoroom.png", "Surface Laptop mới nhất với bộ xử lý Snapdragon X Elite, màn hình PixelSense 13.8 inch, RAM 64GB và SSD 1TB.", 4, 1000.0, 0.15, 850.0, c1);
-
-            Product p5 = new Product("Asus Zenbook A14", "/images/5-Photoroom.png", "Laptop nhỏ gọn với bộ xử lý Snapdragon X, màn hình OLED 14 inch, RAM 16GB và SSD 1TB.", 6, 1100.0, 0.1, 990.0, c1);
-
-            Product p6 = new Product("Lenovo Yoga Slim 9i 14 Gen 10 (2025)", "/images/6-Photoroom.png", "Laptop siêu mỏng với bộ xử lý Intel Core Ultra, màn hình OLED 3K 14 inch, RAM 32GB và SSD 1TB.", 3, 1499.0, 0.08, 1379.12, c1);
-
-            Product p7 = new Product("HP Pavilion Plus 14 (2025)", "/images/7-Photoroom.png", "Laptop thời trang với bộ xử lý AMD Ryzen, màn hình WUXGA 14 inch, RAM 16GB và SSD 512GB.", 5, 899.99, 0.12, 789.99, c1);
-
-            Product p8 = new Product("Dell XPS 13 (9350, Intel Core Ultra 2nd Gen)", "/images/8-Photoroom.png", "Ultrabook cao cấp với bộ xử lý Intel Core Ultra, màn hình InfinityEdge 13.4 inch, RAM 16GB và SSD 512GB.", 4, 1299.0, 0.1, 1169.1, c1);
-
-            Product p9 = new Product("Dell Inspiron 14 Plus (7441)", "/images/9-Photoroom.png", "Laptop giá trị với bộ xử lý Snapdragon X Plus, màn hình 2.2K 14 inch, RAM 16GB và SSD 256GB.", 7, 799.99, 0.15, 679.99, c1);
-
-            Product p10 = new Product("Razer Blade 16 (2025)", "/images/10-Photoroom.png", "Laptop chơi game cao cấp với bộ xử lý AMD Ryzen AI 9, màn hình QHD+ 16 inch, RAM 32GB và SSD 1TB.", 2, 2799.99, 0.05, 2659.99, c1);
-
-            Product p11 = new Product("Asus ROG Zephyrus G16", "/images/11-Photoroom.png", "Laptop chơi game mạnh mẽ với bộ xử lý Intel Core Ultra 9, màn hình QHD OLED 16 inch, RAM 16GB và Nvidia GeForce RTX 4080.", 3, 2699.99, 0.1, 2429.99, c1);
-
-            Product p12 = new Product("Acer Predator Helios Neo 16", "/images/12-Photoroom.png", "Laptop chơi game giá phải chăng với bộ xử lý Intel Core i5, màn hình WUXGA 16 inch, RAM 16GB và Nvidia GeForce RTX 4050.", 4, 1049.99, 0.1, 944.99, c1);
-
-            Product p13 = new Product("HP EliteBook Ultra G1i", "/images/13-Photoroom.png", "Laptop doanh nghiệp với bộ xử lý Intel Core Ultra 7, màn hình OLED 14 inch, RAM 16GB và SSD 512GB.", 5, 1999.0, 0.08, 1839.12, c1);
-
-            Product p14 = new Product("Lenovo ThinkPad X9 15 Aura Edition (2025)", "/images/14-Photoroom.png", "Laptop doanh nghiệp bền bỉ với bộ xử lý Intel Core Ultra, màn hình WQUXGA 15.6 inch, RAM 32GB và SSD 1TB.", 3, 1699.99, 0.1, 1529.99, c1);
-
-            Product p15 = new Product("Lenovo Yoga 9i 2-in-1 Aura Edition 14 (2025)", "/images/15-Photoroom.png", "Laptop 2 trong 1 linh hoạt với bộ xử lý Intel Core Ultra, màn hình cảm ứng OLED 14 inch, RAM 16GB và SSD 1TB.", 4, 1399.99, 0.12, 1227.99, c1);
-
-            Product p16 = new Product("Microsoft Surface Pro 11", "/images/16-Photoroom.png", "Máy tính bảng-laptop linh hoạt với bộ xử lý Snapdragon X Elite, màn hình OLED 13 inch, RAM 64GB và SSD 1TB.", 5, 999.99, 0.1, 899.99, c1);
-
-            Product p17 = new Product("Asus Vivobook S 15 Copilot+", "/images/17-Photoroom.png", "Laptop hỗ trợ AI với bộ xử lý Snapdragon X Elite, màn hình OLED 15.6 inch, RAM 16GB và SSD 1TB.", 3, 1299.99, 0.1, 1169.99, c1);
-
-            Product p18 = new Product("Dell XPS 17 (9730)", "/images/18-Photoroom.png", "Laptop màn hình lớn với bộ xử lý Intel Core i7, màn hình UHD+ 17 inch, RAM 16GB và SSD 512GB.", 2, 2499.99, 0.05, 2374.99, c1);
-
-            Product p19 = new Product("Apple MacBook Pro 16-inch (M4 Pro)", "/images/19-Photoroom.png", "MacBook Pro cao cấp với chip M4 Pro, màn hình Liquid Retina XDR 16 inch, bộ nhớ thống nhất 36GB và SSD 8TB.", 1, 2499.0, 0.0, 2499.0, c1);
-
-            Product p20 = new Product("Lenovo IdeaPad Duet 5 Chromebook", "/images/20-Photoroom.png", "Chromebook giá rẻ với bộ xử lý Qualcomm Snapdragon, màn hình Full HD 13.3 inch, RAM 8GB và eMMC 128GB.", 10, 499.99, 0.15, 425.00, c1);
-
-            Product p21 = new Product("Nikon Z6 III", "/images/21-Photoroom.png", "Camera mirrorless full-frame tiên tiến với cảm biến 24MP, chụp 20fps, video 6K và lấy nét tự động xuất sắc.", 3, 2499.95, 0.1, 2249.96, c2);
-
-            Product p22 = new Product("Canon EOS R10", "/images/22-Photoroom.png", "Camera mirrorless cấp nhập môn với cảm biến APS-C 24.2MP, chụp 23fps, video 4K và thiết kế nhỏ gọn.", 5, 979.99, 0.15, 833.00, c2);
-
-            Product p23 = new Product("Sony A7R V", "/images/23-Photoroom.png", "Camera full-frame độ phân giải cao với cảm biến 61MP, chụp 10fps, video 8K và lấy nét tự động tiên tiến.", 2, 3998.0, 0.05, 3798.1, c2);
-
-            Product p24 = new Product("Fujifilm X-T5", "/images/24-Photoroom.png", "Camera APS-C dành cho người đam mê với cảm biến 40.2MP, chụp 15fps, video 6.2K và thiết kế cổ điển.", 4, 1699.99, 0.1, 1529.99, c2);
-
-            Product p25 = new Product("OM System OM-1 II", "/images/25-Photoroom.png", "Camera Micro Four Thirds với cảm biến 20.4MP, chụp 120fps, video 4K và khả năng chống chịu thời tiết.", 3, 1999.99, 0.12, 1759.99, c2);
-
-            Product p26 = new Product("Fujifilm X100VI", "/images/26-Photoroom.png", "Camera compact cao cấp với cảm biến X-Trans 40.2MP, chụp 11fps, video 6.2K và ống kính cố định 23mm.", 2, 1599.99, 0.08, 1463.99, c2);
-
-            Product p27 = new Product("Olympus OM-D E-M10 Mark IV", "/images/27-Photoroom.png", "Camera Micro Four Thirds giá rẻ với cảm biến 20.3MP, chụp 15fps, video 4K và ổn định hình ảnh 5 trục.", 6, 699.99, 0.15, 595.00, c2);
-
-            Product p28 = new Product("Nikon D7500", "/images/28-Photoroom.png", "Camera DSLR với cảm biến APS-C 20.9MP, chụp 8fps, video 1080p và màn hình cảm ứng xoay.", 4, 1099.95, 0.1, 989.96, c2);
-
-            Product p29 = new Product("Fujifilm Instax Mini 12", "/images/29-Photoroom.png", "Camera chụp ảnh lấy ngay cho người mới với ống kính 60mm, đèn flash tích hợp và dễ sử dụng.", 10, 0, 0.2, 64.00, c2);
-
-            Product p30 = new Product("Nikon Z9", "/images/30-Photoroom.png", "Camera mirrorless full-frame chuyên nghiệp với cảm biến 45.7MP, chụp 20fps raw, video 8K và tính năng tiên tiến.", 1, 5499.95, 0.0, 5499.95, c2);
-
-            Product p31 = new Product("Hasselblad X2D 100C", "/images/31-Photoroom.png", "Camera medium format với cảm biến 100MP, ổn định hình ảnh 7 cấp và chất lượng hình ảnh cao.", 1, 7999.0, 0.0, 7999.0, c2);
-
-            Product p32 = new Product("Canon EOS 5D Mark IV", "/images/32-Photoroom.png", "DSLR chuyên nghiệp với cảm biến full-frame 30.4MP, chụp 7fps, video 4K và thiết kế chắc chắn.", 2, 2499.00, 0.1, 2249.10, c2);
-
-            Product p33 = new Product("Sony A7 IV", "/images/33-Photoroom.png", "Camera mirrorless full-frame với cảm biến 33MP, chụp 10fps, video 4K và lấy nét tự động xuất sắc.", 3, 2498.0, 0.1, 2248.2, c2);
-
-            Product p34 = new Product("Canon EOS R6 Mark II", "/images/34-Photoroom.png", "Camera mirrorless full-frame với cảm biến 24.2MP, chụp 40fps, video 4K và tính năng tiên tiến.", 4, 2499.99, 0.1, 2249.99, c2);
-
-            Product p35 = new Product("Fujifilm GFX 100S II", "/images/35-Photoroom.png", "Camera medium format với cảm biến 102MP, ổn định hình ảnh 5 trục và khả năng chụp ảnh độ phân giải cao.", 1, 4999.99, 0.05, 4749.99, c2);
-
-            Product p36 = new Product("OnePlus 13", "/images/36-Photoroom.png", "Điện thoại thông minh hàng đầu từ OnePlus với tính năng tiên tiến, bộ xử lý mạnh mẽ và thiết kế cao cấp.", 10, 999.99, 0.1, 899.99, c3);
-
-            Product p37 = new Product("Amazfit Active 2", "/images/37-Photoroom.png", "Đồng hồ thông minh với màn hình AMOLED, bản đồ ngoại tuyến, theo dõi giấc ngủ và tập luyện, thiết kế thép không gỉ.", 15,0, 0.15, 169.99, c3);
-
-            Product p38 = new Product("HP All-in-One Desktop", "/images/38-Photoroom.png", "Máy tính tất cả trong một với màn hình cảm ứng 27 hoặc 32 inch, bộ xử lý Intel Core Ultra và webcam tích hợp.", 5, 1299.99, 0.1, 1169.99, c3);
-
-            Product p39 = new Product("Halliday Smart Glasses", "/images/39-Photoroom.png", "Kính thông minh hiển thị màn hình kỹ thuật số, tích hợp AI và điều khiển bằng nhẫn thông minh.", 3, 499.99, 0.05, 474.99, c3);
-
-            Product p40 = new Product("Dreame X50", "/images/40-Photoroom.png", "Robot hút bụi tiên tiến với chân thu gọn, lực hút mạnh và tính năng điều hướng thông minh.", 7, 699.99, 0.12, 611.99, c3);
+            Product p1 = new Product("Apple MacBook Air 13-inch (M4, 2025)", "1-Photoroom.png", "MacBook Air mới nhất với chip M4, màn hình Liquid Retina 13.6 inch, bộ nhớ thống nhất lên đến 24GB và SSD 2TB. Hoàn hảo cho sinh viên và chuyên gia.", 5, 999.0, 0.1, 899.1, c1);
+            Product p2 = new Product("Apple MacBook Air 15-inch (M4, 2025)", "2-Photoroom.png", "Phiên bản màn hình lớn của MacBook Air với chip M4, màn hình Liquid Retina 15.3 inch, bộ nhớ thống nhất 24GB và SSD 2TB.", 3, 1199.0, 0.1, 1079.1, c1);
+            Product p3 = new Product("Apple MacBook Pro 14-inch (M4, 2025)", "3-Photoroom.png", "MacBook Pro hiệu năng cao với chip M4, màn hình Liquid Retina XDR 14.2 inch, bộ nhớ thống nhất 36GB và SSD 8TB. Lý tưởng cho chuyên gia sáng tạo.", 2, 1999.0, 0.05, 1899.05, c1);
+            Product p4 = new Product("Microsoft Surface Laptop 7", "4-Photoroom.png", "Surface Laptop mới nhất với bộ xử lý Snapdragon X Elite, màn hình PixelSense 13.8 inch, RAM 64GB và SSD 1TB.", 4, 1000.0, 0.15, 850.0, c1);
+            Product p5 = new Product("Asus Zenbook A14", "5-Photoroom.png", "Laptop nhỏ gọn với bộ xử lý Snapdragon X, màn hình OLED 14 inch, RAM 16GB và SSD 1TB.", 6, 1100.0, 0.1, 990.0, c1);
+            Product p6 = new Product("Lenovo Yoga Slim 9i 14 Gen 10 (2025)", "6-Photoroom.png", "Laptop siêu mỏng với bộ xử lý Intel Core Ultra, màn hình OLED 3K 14 inch, RAM 32GB và SSD 1TB.", 3, 1499.0, 0.08, 1379.12, c1);
+            Product p7 = new Product("HP Pavilion Plus 14 (2025)", "7-Photoroom.png", "Laptop thời trang với bộ xử lý AMD Ryzen, màn hình WUXGA 14 inch, RAM 16GB và SSD 512GB.", 5, 899.99, 0.12, 789.99, c1);
+            Product p8 = new Product("Dell XPS 13 (9350, Intel Core Ultra 2nd Gen)", "8-Photoroom.png", "Ultrabook cao cấp với bộ xử lý Intel Core Ultra, màn hình InfinityEdge 13.4 inch, RAM 16GB và SSD 512GB.", 4, 1299.0, 0.1, 1169.1, c1);
+            Product p9 = new Product("Dell Inspiron 14 Plus (7441)", "9-Photoroom.png", "Laptop giá trị với bộ xử lý Snapdragon X Plus, màn hình 2.2K 14 inch, RAM 16GB và SSD 256GB.", 7, 799.99, 0.15, 679.99, c1);
+            Product p10 = new Product("Razer Blade 16 (2025)", "10-Photoroom.png", "Laptop chơi game cao cấp với bộ xử lý AMD Ryzen AI 9, màn hình QHD+ 16 inch, RAM 32GB và SSD 1TB.", 2, 2799.99, 0.05, 2659.99, c1);
+            Product p11 = new Product("Asus ROG Zephyrus G16", "11-Photoroom.png", "Laptop chơi game mạnh mẽ với bộ xử lý Intel Core Ultra 9, màn hình QHD OLED 16 inch, RAM 16GB và Nvidia GeForce RTX 4080.", 3, 2699.99, 0.1, 2429.99, c1);
+            Product p12 = new Product("Acer Predator Helios Neo 16", "12-Photoroom.png", "Laptop chơi game giá phải chăng với bộ xử lý Intel Core i5, màn hình WUXGA 16 inch, RAM 16GB và Nvidia GeForce RTX 4050.", 4, 1049.99, 0.1, 944.99, c1);
+            Product p13 = new Product("HP EliteBook Ultra G1i", "13-Photoroom.png", "Laptop doanh nghiệp với bộ xử lý Intel Core Ultra 7, màn hình OLED 14 inch, RAM 16GB và SSD 512GB.", 5, 1999.0, 0.08, 1839.12, c1);
+            Product p14 = new Product("Lenovo ThinkPad X9 15 Aura Edition (2025)", "14-Photoroom.png", "Laptop doanh nghiệp bền bỉ với bộ xử lý Intel Core Ultra, màn hình WQUXGA 15.6 inch, RAM 32GB và SSD 1TB.", 3, 1699.99, 0.1, 1529.99, c1);
+            Product p15 = new Product("Lenovo Yoga 9i 2-in-1 Aura Edition 14 (2025)", "15-Photoroom.png", "Laptop 2 trong 1 linh hoạt với bộ xử lý Intel Core Ultra, màn hình cảm ứng OLED 14 inch, RAM 16GB và SSD 1TB.", 4, 1399.99, 0.12, 1227.99, c1);
+            Product p16 = new Product("Microsoft Surface Pro 11", "16-Photoroom.png", "Máy tính bảng-laptop linh hoạt với bộ xử lý Snapdragon X Elite, màn hình OLED 13 inch, RAM 64GB và SSD 1TB.", 5, 999.99, 0.1, 899.99, c1);
+            Product p17 = new Product("Asus Vivobook S 15 Copilot+", "17-Photoroom.png", "Laptop hỗ trợ AI với bộ xử lý Snapdragon X Elite, màn hình OLED 15.6 inch, RAM 16GB và SSD 1TB.", 3, 1299.99, 0.1, 1169.99, c1);
+            Product p18 = new Product("Dell XPS 17 (9730)", "18-Photoroom.png", "Laptop màn hình lớn với bộ xử lý Intel Core i7, màn hình UHD+ 17 inch, RAM 16GB và SSD 512GB.", 2, 2499.99, 0.05, 2374.99, c1);
+            Product p19 = new Product("Apple MacBook Pro 16-inch (M4 Pro)", "19-Photoroom.png", "MacBook Pro cao cấp với chip M4 Pro, màn hình Liquid Retina XDR 16 inch, bộ nhớ thống nhất 36GB và SSD 8TB.", 1, 2499.0, 0.0, 2499.0, c1);
+            Product p20 = new Product("Lenovo IdeaPad Duet 5 Chromebook", "20-Photoroom.png", "Chromebook giá rẻ với bộ xử lý Qualcomm Snapdragon, màn hình Full HD 13.3 inch, RAM 8GB và eMMC 128GB.", 10, 499.99, 0.15, 425.00, c1);
+            Product p21 = new Product("Nikon Z6 III", "21-Photoroom.png", "Camera mirrorless full-frame tiên tiến với cảm biến 24MP, chụp 20fps, video 6K và lấy nét tự động xuất sắc.", 3, 2499.95, 0.1, 2249.96, c2);
+            Product p22 = new Product("Canon EOS R10", "22-Photoroom.png", "Camera mirrorless cấp nhập môn với cảm biến APS-C 24.2MP, chụp 23fps, video 4K và thiết kế nhỏ gọn.", 5, 979.99, 0.15, 833.00, c2);
+            Product p23 = new Product("Sony A7R V", "23-Photoroom.png", "Camera full-frame độ phân giải cao với cảm biến 61MP, chụp 10fps, video 8K và lấy nét tự động tiên tiến.", 2, 3998.0, 0.05, 3798.1, c2);
+            Product p24 = new Product("Fujifilm X-T5", "24-Photoroom.png", "Camera APS-C dành cho người đam mê với cảm biến 40.2MP, chụp 15fps, video 6.2K và thiết kế cổ điển.", 4, 1699.99, 0.1, 1529.99, c2);
+            Product p25 = new Product("OM System OM-1 II", "25-Photoroom.png", "Camera Micro Four Thirds với cảm biến 20.4MP, chụp 120fps, video 4K và khả năng chống chịu thời tiết.", 3, 1999.99, 0.12, 1759.99, c2);
+            Product p26 = new Product("Fujifilm X100VI", "26-Photoroom.png", "Camera compact cao cấp với cảm biến X-Trans 40.2MP, chụp 11fps, video 6.2K và ống kính cố định 23mm.", 2, 1599.99, 0.08, 1463.99, c2);
+            Product p27 = new Product("Olympus OM-D E-M10 Mark IV", "27-Photoroom.png", "Camera Micro Four Thirds giá rẻ với cảm biến 20.3MP, chụp 15fps, video 4K và ổn định hình ảnh 5 trục.", 6, 699.99, 0.15, 595.00, c2);
+            Product p28 = new Product("Nikon D7500", "28-Photoroom.png", "Camera DSLR với cảm biến APS-C 20.9MP, chụp 8fps, video 1080p và màn hình cảm ứng xoay.", 4, 1099.95, 0.1, 989.96, c2);
+            Product p29 = new Product("Fujifilm Instax Mini 12", "29-Photoroom.png", "Camera chụp ảnh lấy ngay cho người mới với ống kính 60mm, đèn flash tích hợp và dễ sử dụng.", 10, 0, 0.2, 64.00, c2);
+            Product p30 = new Product("Nikon Z9", "30-Photoroom.png", "Camera mirrorless full-frame chuyên nghiệp với cảm biến 45.7MP, chụp 20fps raw, video 8K và tính năng tiên tiến.", 1, 5499.95, 0.0, 5499.95, c2);
+            Product p31 = new Product("Hasselblad X2D 100C", "31-Photoroom.png", "Camera medium format với cảm biến 100MP, ổn định hình ảnh 7 cấp và chất lượng hình ảnh cao.", 1, 7999.0, 0.0, 7999.0, c2);
+            Product p32 = new Product("Canon EOS 5D Mark IV", "32-Photoroom.png", "DSLR chuyên nghiệp với cảm biến full-frame 30.4MP, chụp 7fps, video 4K và thiết kế chắc chắn.", 2, 2499.00, 0.1, 2249.10, c2);
+            Product p33 = new Product("Sony A7 IV", "33-Photoroom.png", "Camera mirrorless full-frame với cảm biến 33MP, chụp 10fps, video 4K và lấy nét tự động xuất sắc.", 3, 2498.0, 0.1, 2248.2, c2);
+            Product p34 = new Product("Canon EOS R6 Mark II", "34-Photoroom.png", "Camera mirrorless full-frame với cảm biến 24.2MP, chụp 40fps, video 4K và tính năng tiên tiến.", 4, 2499.99, 0.1, 2249.99, c2);
+            Product p35 = new Product("Fujifilm GFX 100S II", "35-Photoroom.png", "Camera medium format với cảm biến 102MP, ổn định hình ảnh 5 trục và khả năng chụp ảnh độ phân giải cao.", 1, 4999.99, 0.05, 4749.99, c2);
+            Product p36 = new Product("OnePlus 13", "36-Photoroom.png", "Điện thoại thông minh hàng đầu từ OnePlus với tính năng tiên tiến, bộ xử lý mạnh mẽ và thiết kế cao cấp.", 10, 999.99, 0.1, 899.99, c3);
+            Product p37 = new Product("Amazfit Active 2", "37-Photoroom.png", "Đồng hồ thông minh với màn hình AMOLED, bản đồ ngoại tuyến, theo dõi giấc ngủ và tập luyện, thiết kế thép không gỉ.", 15, 0, 0.15, 169.99, c3);
+            Product p38 = new Product("HP All-in-One Desktop", "38-Photoroom.png", "Máy tính tất cả trong một với màn hình cảm ứng 27 hoặc 32 inch, bộ xử lý Intel Core Ultra và webcam tích hợp.", 5, 1299.99, 0.1, 1169.99, c3);
+            Product p39 = new Product("Halliday Smart Glasses", "39-Photoroom.png", "Kính thông minh hiển thị màn hình kỹ thuật số, tích hợp AI và điều khiển bằng nhẫn thông minh.", 3, 499.99, 0.05, 474.99, c3);
+            Product p40 = new Product("Dreame X50", "40-Photoroom.png", "Robot hút bụi tiên tiến với chân thu gọn, lực hút mạnh và tính năng điều hướng thông minh.", 7, 699.99, 0.12, 611.99, c3);
 
             // Các sản phẩm Laptop (p1 → p20) – đã có sẵn trong câu trước
             p1.setBrand(b2);  // Apple

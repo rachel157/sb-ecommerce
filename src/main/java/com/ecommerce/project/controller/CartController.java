@@ -57,6 +57,17 @@ public class CartController {
     public ResponseEntity<String> deleteCartProductFromCart(@PathVariable Long cartId,
                                                              @PathVariable Long productId){
         String status = cartService.deleteProductFromCart(cartId,productId);
-        return new ResponseEntity<String>(status,HttpStatus.OK);
+        return new ResponseEntity<>(status,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/carts/{cartId}/clear")
+    public ResponseEntity<String> clearCart(@PathVariable Long cartId) {
+        String emailId = authUtil.loggedInEmail();
+        Cart cart = cartRepository.findCartByEmail(emailId);
+        if (cart == null || !cart.getCartId().equals(cartId)) {
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        }
+        cartService.clearCart(cartId); // Hàm này bạn cần hiện thực trong service
+        return new ResponseEntity<>("Cart has been cleared", HttpStatus.OK);
     }
 }

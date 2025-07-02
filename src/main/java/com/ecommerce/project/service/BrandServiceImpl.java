@@ -84,13 +84,13 @@ public class BrandServiceImpl implements BrandService {
         return "Brand has been deleted";
     }
 
-//    @Override
-//    public List<BrandDTO> searchBrandByKeyword(String keyword) {
-//        List<Brand> brands = brandRepository.findByBrandNameContainingIgnoreCase(keyword);
-//        if(brands==null){
-//            throw new APIException("No Brands Found With Brand Name: " + keyword);
-//        }
-//        List<BrandDTO> brandDTOS = brands.stream().map(b -> modelMapper.map(b, BrandDTO.class)).toList();
-//        return brandDTOS;
-//    }
+    @Override
+    public List<BrandDTO> searchBrandByKeyword(String keyword) {
+        List<Brand> brands = brandRepository.findByBrandNameContainingIgnoreCase(keyword);
+        if(brands==null||brands.isEmpty()){
+            throw new APIException("No Brands Found With Brand Name: " + keyword);
+        }
+        List<BrandDTO> brandDTOS = brands.stream().map(b -> modelMapper.map(b, BrandDTO.class)).toList();
+        return brandDTOS;
+    }
 }

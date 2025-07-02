@@ -48,11 +48,11 @@ public class BrandController {
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 
-//    @GetMapping("/public/brands")
-//    public ResponseEntity<List<BrandDTO>> searchBrandsByKeyword(@RequestParam(name="keyword") String keyword){
-//        List<BrandDTO> brands = brandService.searchBrandByKeyword(keyword);
-//        return new ResponseEntity<>(brands, HttpStatus.OK);
-//    }
+    @GetMapping("/public/brands/search")
+    public ResponseEntity<List<BrandDTO>> searchBrandsByKeyword(@RequestParam(name = "keyword") String keyword){
+        List<BrandDTO> brands = brandService.searchBrandByKeyword(keyword);
+        return new ResponseEntity<>(brands, HttpStatus.OK);
+    }
 
 
 }

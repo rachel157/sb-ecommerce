@@ -15,5 +15,5 @@ public interface BrandService {
 
     String deleteBrand(Long brandId);
 
-    //List<BrandDTO> searchBrandByKeyword(String keyword);
+    List<BrandDTO> searchBrandByKeyword(String keyword);
 }

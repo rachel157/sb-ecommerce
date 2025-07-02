@@ -275,4 +275,20 @@ public class CartServiceImpl implements CartService {
         cartRepository.save(userCart);
         return "Cart created/updated with the new items successfully";
     }
+
+    @Transactional
+    @Override
+    public void clearCart(Long cartId) {
+        Cart cart = cartRepository.findById(cartId)
+                .orElseThrow(()-> new ResourceNotFoundException("Cart","cartId",cartId));
+        List<CartItem> cartItems = cart.getCartItems();
+        if (cartItems == null || cartItems.isEmpty()) {
+           throw new APIException("Cart is empty");
+        }
+        cartItemRepository.deleteAllByCartId(cartId);
+        cart.setTotalPrice(0.00);
+        cartRepository.save(cart);
+    }
+
+
 }

@@ -3,6 +3,7 @@ package com.ecommerce.project.controller;
 
 import com.ecommerce.project.config.AppConstants;
 import com.ecommerce.project.model.Category;
+import com.ecommerce.project.payload.BrandDTO;
 import com.ecommerce.project.payload.CategoryDTO;
 import com.ecommerce.project.payload.CategoryResponse;
 import com.ecommerce.project.service.CategoryService;
@@ -54,6 +55,12 @@ public class CategoryController {
                                                       @PathVariable Long categoryId) {
         CategoryDTO savedCategoryDTO = categoryService.updateCategory(categoryDTO, categoryId);
         return new ResponseEntity<>(savedCategoryDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/public/categories/search")
+    public ResponseEntity<List<CategoryDTO>> searchCategoryByKeyword(@RequestParam(name = "keyword") String keyword){
+        List<CategoryDTO> categories = categoryService.searchCategoryByKeyword(keyword);
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
 
