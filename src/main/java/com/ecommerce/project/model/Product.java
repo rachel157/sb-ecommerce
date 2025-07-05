@@ -9,6 +9,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -39,6 +42,10 @@ public class Product {
     private Category category;
 
     @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
+    @ManyToOne
     @JoinColumn(name = "seller_id")
     private User user;
 
@@ -52,4 +59,7 @@ public class Product {
         this.specialPrice = specialPrice;
         this.category = category;
     }
+
+    @OneToMany(mappedBy = "product" , cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE},fetch = FetchType.EAGER)
+    private List<CartItem> cartItems = new ArrayList<>();
 }
