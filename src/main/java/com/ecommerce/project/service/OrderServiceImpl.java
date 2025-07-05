@@ -3,6 +3,7 @@ package com.ecommerce.project.service;
 import com.ecommerce.project.exceptions.APIException;
 import com.ecommerce.project.exceptions.ResourceNotFoundException;
 import com.ecommerce.project.model.*;
+import com.ecommerce.project.payload.AddressDTO;
 import com.ecommerce.project.payload.OrderDTO;
 import com.ecommerce.project.payload.OrderItemDTO;
 import com.ecommerce.project.repositories.*;
@@ -106,7 +107,7 @@ public class OrderServiceImpl implements OrderService {
         orderDTO.setOrderItems(new ArrayList<>());
         orderItems.forEach(item -> orderDTO.getOrderItems().add(modelMapper.map(item, OrderItemDTO.class)));
 
-        orderDTO.setAddressId(addressId);
+        orderDTO.setAddress(modelMapper.map(address, AddressDTO.class));
 
         return orderDTO;
     }
