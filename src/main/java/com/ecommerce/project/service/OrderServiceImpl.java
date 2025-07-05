@@ -85,7 +85,9 @@ public class OrderServiceImpl implements OrderService {
 
         orderItems = orderItemRepository.saveAll(orderItems);
 
-        cart.getCartItems().forEach(item -> {
+        List<CartItem> itemsToDelete = new ArrayList<>(cart.getCartItems());
+
+        itemsToDelete.forEach(item -> {
             int quantity = item.getQuantity();
             Product product = item.getProduct();
 

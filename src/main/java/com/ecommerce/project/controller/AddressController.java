@@ -22,7 +22,7 @@ public class AddressController {
     @Autowired
     private AddressServiceImpl addressService;
 
-    @PostMapping("/addresses")
+    @PostMapping("/users/addresses")
     public ResponseEntity<AddressDTO> createAddress(@Valid @RequestBody AddressDTO addressDTO) {
         User user = authUtil.loggedInUser();
         AddressDTO savedAddressDTO = addressService.createAddress(addressDTO,user);
@@ -49,14 +49,14 @@ public class AddressController {
         return new ResponseEntity<>(addressList, HttpStatus.OK);
     }
 
-    @PutMapping("/addresses/{addressId}")
+    @PutMapping("/users/addresses/{addressId}")
     public ResponseEntity<AddressDTO> updateAddress(@PathVariable Long addressId,
                                                     @Valid @RequestBody AddressDTO addressDTO){
         AddressDTO updatedAddress = addressService.updateAddress(addressId,addressDTO);
         return new ResponseEntity<>(updatedAddress, HttpStatus.OK);
     }
 
-    @DeleteMapping("/addresses/{addressId}")
+    @DeleteMapping("/users/addresses/{addressId}")
     public ResponseEntity<String> updateAddress(@PathVariable Long addressId){
         String status = addressService.deletedAddress(addressId);
         return new ResponseEntity<>(status, HttpStatus.OK);
