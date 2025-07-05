@@ -22,7 +22,7 @@ public class Payment {
     private Order order;
 
     @NotBlank
-    @Size(min=4,message = "Payment method must contain at least 4 characters")
+    @Size(min=1,message = "Payment method must contain at least 1 characters")
     private String paymentMethod;
 
     private String pgPaymentId;
