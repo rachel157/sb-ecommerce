@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -108,6 +109,25 @@ public class OrderServiceImpl implements OrderService {
         orderDTO.setAddressId(addressId);
 
         return orderDTO;
+    }
+
+    @Override
+    public List<OrderDTO> getAllOrders() {
+        List<Order> orders = orderRepository.findAll();
+        if(orders.isEmpty()||orders==null) {
+            throw new APIException("No orders found");
+        }
+        List<OrderDTO> orderDTOS = orders.stream().map(order -> modelMapper.map(order, OrderDTO.class)).collect(Collectors.toList());
+        return orderDTOS;
+    }
+
+    @Override
+    public List<OrderItemDTO> getOrderItems(Long orderId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order", "orderId", orderId));
+        List<OrderItem> orderItems = new ArrayList<>(order.getOrderItems());
+        List<OrderItemDTO> orderItemDTOS = orderItems.stream().map(orderItem -> modelMapper.map(orderItem, OrderItemDTO.class)).collect(Collectors.toList());
+        return orderItemDTOS;
     }
 }
  
